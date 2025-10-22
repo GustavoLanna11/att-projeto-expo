@@ -1,6 +1,6 @@
 import { Image } from "expo-image"
 import * as WebBrowser from 'expo-web-browser';
-import { Alert, Button, ScrollView, Text, View } from "react-native"
+import { Alert, Button, ScrollView, Text, View, TouchableOpacity, Pressable } from "react-native"
 import Card from "../components/Card"
 
 export default function Index() {
@@ -22,8 +22,31 @@ export default function Index() {
                     WebBrowser.openBrowserAsync("https://github.com/gustavolanna11");
                 }
                 }/> 
+
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    style={{ backgroundColor: "#1d1d1d", padding:16, alignItems: "center" }}
+                    onPress={() => Alert.alert("Info", "Você clicou no TouchableOpacity!")}
+                    >
+                    <Text style={{ color: "#dfdfdf" }}>TouchableOpacity</Text>
+                </TouchableOpacity>
+
                 
-                <Card title="Primeiro Card" body="Corpo do Card" href={"/buttons"}></Card>
+                <Pressable
+                    style={{
+                        backgroundColor: "#2ED0FF",
+                        padding: 16,
+                        alignItems: "center",
+                        borderRadius: 8,
+                    }}
+                    onPress={() => console.log("Clicou no botão")}
+                    onLongPress={() => console.warn("Segurou no botão")}
+                    onPressOut={() => console.error("Largou do botão")}
+                    delayLongPress={1000}
+                    >
+                    <Text style={{ color: "#1d1d1d" }}>Pressable</Text>
+                </Pressable>
+
 
             </View>
         </ScrollView>
